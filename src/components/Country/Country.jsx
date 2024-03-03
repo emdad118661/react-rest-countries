@@ -21,6 +21,8 @@ const Country = ({country, handleVisitedCountries, handleVisitedFlags}) => {
             <br/>
             <br/>
             <button onClick={() => handleVisitedFlags(country.flags.png)}>Add flags</button>
+            <br/>
+            <br/>
             <button onClick={handleVisited}>{visited ? "visited" : "Will go"}</button>
             {
                 visited ? ' I have visited':' I want to visit'
