@@ -7,6 +7,8 @@ const Countries = () => {
 
     const [visitedCountries, setVisitedCountries] = useState([]);
 
+    const [visitedFlags, setVisitedFlags] = useState([]);
+
     useEffect( () => {
         
         
@@ -22,9 +24,15 @@ const Countries = () => {
          setVisitedCountries(newVisitedCountries);
     }
 
+    const handleVisitedFlags = (flags) =>{
+         const newVisitedFlags = [...visitedFlags, flags];
+         setVisitedFlags(newVisitedFlags);
+    }
+
     return (
         <div>
             <h2>Countries in other file: {countries.length}</h2>
+            {/* visited countries */}
             <div>
                 <h5>Visited Countries: {visitedCountries.length}</h5>
                 <ul>
@@ -33,9 +41,16 @@ const Countries = () => {
                      }
                 </ul>
             </div>
+            {/* display flags */}
+            <div className='flags-container'>
+               {
+                visitedFlags.map((flag,idx) => <img key={idx} src={flag}></img>)
+               }
+            </div>
+            {/* display countries */}
             <div className='countries-container'>
             {
-                countries.map(country => <Country key={country.cca3} handleVisitedCountries={handleVisitedCountries} country={country}></Country>)
+                countries.map(country => <Country key={country.cca3} handleVisitedCountries={handleVisitedCountries} handleVisitedFlags={handleVisitedFlags} country={country}></Country>)
             }
             </div>
         </div>
